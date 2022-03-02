@@ -1,5 +1,4 @@
-
-
+import { wordlist } from './new_words.js'
 let topAmount = 0
 for (let r = 1; r <= 5; r++){
 	let rowId = 'row' + r.toString()
@@ -19,6 +18,11 @@ for (let r = 1; r <= 5; r++){
 	}
 }	
 
+
+
+
+let randomElement = wordlist[Math.floor(Math.random() * wordlist.length)];
+console.log(randomElement)
 let rowUnlocked = 1
 let guessedWord = ''
 let correctWord = 'hello'

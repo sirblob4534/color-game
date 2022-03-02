@@ -19,10 +19,21 @@ for (let r = 1; r <= 5; r++){
 
 let rowUnlocked = 1
 let guessedWord = ''
-let correctWord = 'hello'
-let keyRowOne = 'qwertyuiop'	
+let correctWord = 'wirey'
+let keyRowOne = 'qwertyuiop'
+let enterPressed = false	
 
 func()
+
+document.addEventListener('keypress', function(e){
+	if (e.key == 'Enter'){
+		enterPressed = true
+		func()
+		
+	}
+	
+	
+})
 
 for (let L1 = 1; L1 <= 10; L1++){
 	let keySet1Id = 'L' + L1.toString()
@@ -69,12 +80,17 @@ function func(){
 		tile.style.borderWidth = '1px'
 		tile.style.boxSizing = 'border-box'
 		tile.style.float = 'left'
-		if (guessedWord[t1 - 1] == correctWord[t1 - 1]){
-			tile.style.backgroundColor = 'green'	
-		}else if (correctWord.includes(guessedWord[t1 - 1]) == true){
-			tile.style.backgroundColor = 'yellow'	
-		}else{
-			tile.style.backgroundColor = 'grey'
+		if (enterPressed == true){
+			if (guessedWord[t1 - 1] == correctWord[t1 - 1]){
+				tile.style.backgroundColor = 'green'	
+			}else if (correctWord.includes(guessedWord[t1 - 1]) == true){
+				tile.style.backgroundColor = 'yellow'	
+			}else{
+				tile.style.backgroundColor = 'grey'
+			}
+			if (t1 == 5){
+				enterPressed = false
+			}
 		}
 	}		
 }

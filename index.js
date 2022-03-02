@@ -1,3 +1,4 @@
+
 import { wordlist } from './new_words.js'
 let topAmount = 0
 for (let r = 1; r <= 5; r++){

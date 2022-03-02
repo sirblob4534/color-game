@@ -36,6 +36,14 @@ document.addEventListener('keypress', function(e){
 			correctWord = backup
 			if (currentRow == 1){
 				func1()	
+			}else if (currentRow == 2){
+				func2()
+			}else if (currentRow == 3){
+				func3()
+			}else if (currentRow == 4){
+				func4()
+			}else if (currentRow == 5){
+				func5()
 			}
 			currentRow += 1
 			guessedWord = ''
@@ -46,6 +54,9 @@ document.addEventListener('keypress', function(e){
 
 func1()
 func2()
+func3()
+func4()
+func5()
 
 //qwertyuiop
 for (let L1 = 1; L1 <= 10; L1++){
@@ -71,6 +82,14 @@ for (let L1 = 1; L1 <= 10; L1++){
 			if (guessedWord.length <= 5){
 				if (currentRow == 1){
 					func1()	
+				}else if (currentRow == 2){
+					func2()
+				}else if (currentRow == 3){
+					func3()
+				}else if (currentRow == 4){
+					func4()
+				}else if (currentRow == 5){
+					func5()
 				}
 			}
 		}
@@ -102,6 +121,14 @@ for (let L2 = 1; L2 <= 9; L2++){
 			if (guessedWord.length <= 5){
 				if (currentRow == 1){
 					func1()	
+				}else if (currentRow == 2){
+					func2()
+				}else if (currentRow == 3){
+					func3()
+				}else if (currentRow == 4){
+					func4()
+				}else if (currentRow == 5){
+					func5()
 				}
 				
 			}
@@ -134,6 +161,14 @@ for (let L3 = 1; L3 <= 7; L3++){
 			if (guessedWord.length <= 5){
 				if (currentRow == 1){
 					func1()	
+				}else if (currentRow == 2){
+					func2()
+				}else if (currentRow == 3){
+					func3()
+				}else if (currentRow == 4){
+					func4()
+				}else if (currentRow == 5){
+					func5()
 				}
 			}
 		}
@@ -200,7 +235,7 @@ function func2(){
 			}else if (correctWord.includes(guessedWord[t2 - 1]) == true){
 				correctWord = correctWord.replace(guessedWord[t2 - 1], '')
 				console.log(correctWord)
-				tile2.style.backgroundColor = 'yellow'	
+				tile2.style.backgroundColor = 'yellow'
 			}else{
 				tile2.style.backgroundColor = 'grey'
 			}
@@ -211,13 +246,114 @@ function func2(){
 	}		
 }
 
+function func3(){
+	for (let t3 = 1; t3 <= 5; t3++){
+		let tile3Id = 'R3T' + t3.toString()
+		let tile3 = document.getElementById(tile3Id)
+		tile3.innerHTML = guessedWord[t3 - 1] ?? ''
+		tile3.style.display = 'inline-block'
+		tile3.style.width = '70px'
+		tile3.style.height = '80px'
+		tile3.style.top = '160px'
+		tile3.style.margin = '0px'
+		tile3.style.padding = '0px'
+		tile3.style.textAlign = 'center'
+		tile3.style.lineHeight = '82px'
+		tile3.style.fontSize = '42px'
+		tile3.style.borderStyle = 'solid'
+		tile3.style.borderWidth = '1px'
+		tile3.style.boxSizing = 'border-box'
+		tile3.style.float = 'left'
+		if (enterPressed == true){
+			if (guessedWord[t3 - 1] == correctWord[t3 - 1]){
+				tile3.style.backgroundColor = 'green'	
+			}else if (correctWord.includes(guessedWord[t3 - 1]) == true){
+				correctWord = correctWord.replace(guessedWord[t3 - 1], '')
+				console.log(correctWord)
+				tile3.style.backgroundColor = 'yellow'
+			}else{
+				tile3.style.backgroundColor = 'grey'
+			}
+			if (t3 == 5){
+				enterPressed = false
+			}
+		}
+	}		
+}
+
+
+function func4(){
+	for (let t4 = 1; t4 <= 5; t4++){
+		let tile4Id = 'R4T' + t4.toString()
+		let tile4 = document.getElementById(tile4Id)
+		tile4.innerHTML = guessedWord[t4 - 1] ?? ''
+		tile4.style.display = 'inline-block'
+		tile4.style.width = '70px'
+		tile4.style.height = '80px'
+		tile4.style.top = '240px'
+		tile4.style.margin = '0px'
+		tile4.style.padding = '0px'
+		tile4.style.textAlign = 'center'
+		tile4.style.lineHeight = '82px'
+		tile4.style.fontSize = '42px'
+		tile4.style.borderStyle = 'solid'
+		tile4.style.borderWidth = '1px'
+		tile4.style.boxSizing = 'border-box'
+		tile4.style.float = 'left'
+		if (enterPressed == true){
+			if (guessedWord[t4 - 1] == correctWord[t4 - 1]){
+				tile4.style.backgroundColor = 'green'	
+			}else if (correctWord.includes(guessedWord[t4 - 1]) == true){
+				correctWord = correctWord.replace(guessedWord[t4 - 1], '')
+				console.log(correctWord)
+				tile4.style.backgroundColor = 'yellow'
+			}else{
+				tile4.style.backgroundColor = 'grey'
+			}
+			if (t4 == 5){
+				enterPressed = false
+			}
+		}
+	}		
+}
 
 
 
 
-
-
-
+function func5(){
+	for (let t5 = 1; t5 <= 5; t5++){
+		let tile5Id = 'R5T' + t5.toString()
+		let tile5 = document.getElementById(tile5Id)
+		tile5.innerHTML = guessedWord[t5 - 1] ?? ''
+		tile5.style.display = 'inline-block'
+		tile5.style.width = '70px'
+		tile5.style.height = '80px'
+		tile5.style.top = '320px'
+		tile5.style.margin = '0px'
+		tile5.style.padding = '0px'
+		tile5.style.textAlign = 'center'
+		tile5.style.lineHeight = '82px'
+		tile5.style.fontSize = '42px'
+		tile5.style.borderStyle = 'solid'
+		tile5.style.borderWidth = '1px'
+		tile5.style.boxSizing = 'border-box'
+		tile5.style.float = 'left'
+		if (enterPressed == true){
+			if (guessedWord[t5 - 1] == correctWord[t5 - 1]){
+				tile5.style.backgroundColor = 'green'	
+			}else if (correctWord.includes(guessedWord[t5 - 1]) == true){
+				correctWord = correctWord.replace(guessedWord[t5 - 1], '')
+				console.log(correctWord)
+				tile5.style.backgroundColor = 'yellow'
+			}else{
+				tile5.style.backgroundColor = 'grey'
+			}
+			if (t5 == 5){
+				enterPressed = false
+			}
+		}
+	}		
+}
 
 
 

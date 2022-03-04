@@ -1,7 +1,7 @@
 
-import { wordlist } from './new_words.js'
+
 let topAmount = 0
-for (let r = 1; r <= 5; r++){
+for (let r = 1; r <= 6; r++){
 	let rowId = 'row' + r.toString()
 	let row = document.getElementById(rowId)
 	row.style.padding = '0px'
@@ -19,30 +19,20 @@ for (let r = 1; r <= 5; r++){
 	}
 }	
 
-
-
-
-let randomElement = wordlist[Math.floor(Math.random() * wordlist.length)];
-console.log(randomElement)
-let rowUnlocked = 1
-let guessedWord = ''
-let correctWord = 'hello'
-let keyRowOne = 'qwertyuiop'
-let keyRowTwo = 'asdfghjkl'
-let keyRowThree = 'zxcvbnm'
-let enterPressed = false
-let backup = correctWord
-
-let currentRow = 1
-
-document.addEventListener('keypress', function(e){
-	if (guessedWord.length == 5){
-		
-		if (e.key == 'Enter'){
+enter = document.getElementById('enter')
+enter.innerHTML = 'ENTER'
+enter.style.textAlign = 'center'
+enter.style.borderStyle = 'solid'
+enter.style.borderWidth = '1px'
+enter.style.left = 
+document.addEventListener('click', function(e) {
+	if (enter == e.target && enter.contains(e.target)){
+		if (guessedWord.length == 5){
 			enterPressed = true
-			correctWord = backup
+			console.log('backup ' + backup)
+			console.log('correct ' + correctWord)
 			if (currentRow == 1){
-				func1()	
+				func1()
 			}else if (currentRow == 2){
 				func2()
 			}else if (currentRow == 3){
@@ -51,19 +41,74 @@ document.addEventListener('keypress', function(e){
 				func4()
 			}else if (currentRow == 5){
 				func5()
+			}else if (currentRow == 6){
+				func6()
 			}
+			if (guessedWord == correctWord){
+				alert('You guessed correct!')
+				
+			}
+			console.log('before: ' + backup)
+			backup = correctWord
+			console.log('after: ' + backup)
 			currentRow += 1
 			guessedWord = ''
+		
 		}
 	}
 })
 
 
-func1()
-func2()
-func3()
-func4()
-func5()
+
+let rowUnlocked = 1
+let guessedWord = ''
+let correctWord = wordlist[Math.floor(Math.random() * wordlist.length)].toString()
+let keyRowOne = 'qwertyuiop'
+let keyRowTwo = 'asdfghjkl'
+let keyRowThree = 'zxcvbnm'
+let enterPressed = false
+let backup = correctWord
+
+let currentRow = 1
+letters = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+greyLetters = []
+
+
+/*
+document.addEventListener('keypress', function(e){
+	if (guessedWord.length == 5){
+		
+		if (e.key == 'Enter'){
+			enterPressed = true
+			console.log('backup ' + backup)
+			console.log('correct ' + correctWord)
+			if (currentRow == 1){
+				func1()
+			}else if (currentRow == 2){
+				func2()
+			}else if (currentRow == 3){
+				func3()
+			}else if (currentRow == 4){
+				func4()
+			}else if (currentRow == 5){
+				func5()
+			}else if (currentRow == 6){
+				func6()
+			}
+			if (guessedWord == correctWord){
+				alert('You guessed correct!')
+				
+			}
+			console.log('before: ' + backup)
+			backup = correctWord
+			console.log('after: ' + backup)
+			currentRow += 1
+			guessedWord = ''
+		}
+	}
+})
+*/
+
 
 //qwertyuiop
 for (let L1 = 1; L1 <= 10; L1++){
@@ -82,7 +127,7 @@ for (let L1 = 1; L1 <= 10; L1++){
 	keySet1.style.boxSizing = 'border-box'
 	keySet1.style.lineHeight = '54px'
 	keySet1.style.fontSize = '21px'
-	keySet1.style.float = 'left'
+	keySet1.style.float = 'left'		
 	document.addEventListener('click', function(e) {
 		if (keySet1 == e.target && keySet1.contains(e.target)) {    
 			guessedWord += keySet1.innerHTML.toString()
@@ -97,6 +142,8 @@ for (let L1 = 1; L1 <= 10; L1++){
 					func4()
 				}else if (currentRow == 5){
 					func5()
+				}else if (currentRow == 6){
+					func6()
 				}
 			}
 		}
@@ -136,8 +183,9 @@ for (let L2 = 1; L2 <= 9; L2++){
 					func4()
 				}else if (currentRow == 5){
 					func5()
+				}else if (currentRow == 6){
+					func6()
 				}
-				
 			}
 		}
 	});
@@ -176,6 +224,8 @@ for (let L3 = 1; L3 <= 7; L3++){
 					func4()
 				}else if (currentRow == 5){
 					func5()
+				}else if (currentRow == 6){
+					func6()
 				}
 			}
 		}
@@ -183,7 +233,7 @@ for (let L3 = 1; L3 <= 7; L3++){
 	
 }
 
-
+let greenLoop = true
 function func1(){
 	for (let t1 = 1; t1 <= 5; t1++){
 		let tileId = 'R1T' + t1.toString()
@@ -202,22 +252,44 @@ function func1(){
 		tile.style.boxSizing = 'border-box'
 		tile.style.float = 'left'
 		if (enterPressed == true){
-			if (guessedWord[t1 - 1] == correctWord[t1 - 1]){
-				tile.style.backgroundColor = 'green'	
-			}else if (correctWord.includes(guessedWord[t1 - 1]) == true){
-				correctWord = correctWord.replace(guessedWord[t1 - 1], '')
-				console.log(correctWord)
-				tile.style.backgroundColor = 'yellow'	
-			}else{
-				tile.style.backgroundColor = 'grey'
+			if (greenLoop == true){
+				if (guessedWord[t1 - 1] == backup[t1 - 1]){
+					backup = backup.replace(guessedWord[t1 - 1], ' ')
+					tile.style.backgroundColor = 'green'
+					
+				}
 			}
-			if (t1 == 5){
+			
+			if (t1 == 5 && greenLoop == true){
+				greenLoop = false
+				func1()
+			}
+			
+			if (greenLoop == false){
+				if (backup.includes(guessedWord[t1 - 1]) == true){
+					backup = backup.replace(guessedWord[t1 - 1], ' ')
+					console.log(t1 - 1)
+					tile.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t1 == 5 && greenLoop == false){
 				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile.style.backgroundColor == 'grey'){
+					if (tile.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
 			}
 		}
 	}		
 }
-
+let greenLoop2 = true
 function func2(){
 	for (let t2 = 1; t2 <= 5; t2++){
 		let tile2Id = 'R2T' + t2.toString()
@@ -237,22 +309,45 @@ function func2(){
 		tile2.style.boxSizing = 'border-box'
 		tile2.style.float = 'left'
 		if (enterPressed == true){
-			if (guessedWord[t2 - 1] == correctWord[t2 - 1]){
-				tile2.style.backgroundColor = 'green'	
-			}else if (correctWord.includes(guessedWord[t2 - 1]) == true){
-				correctWord = correctWord.replace(guessedWord[t2 - 1], '')
-				console.log(correctWord)
-				tile2.style.backgroundColor = 'yellow'
-			}else{
-				tile2.style.backgroundColor = 'grey'
+			if (greenLoop2 == true){
+				if (guessedWord[t2 - 1] == backup[t2 - 1]){
+					backup = backup.replace(guessedWord[t2 - 1], ' ')
+					tile2.style.backgroundColor = 'green'
+					
+				}
 			}
-			if (t2 == 5){
+			
+			if (t2 == 5 && greenLoop2 == true){
+				greenLoop2 = false
+				func2()
+			}
+			
+			if (greenLoop2 == false){
+				if (backup.includes(guessedWord[t2 - 1]) == true){
+					backup = backup.replace(guessedWord[t2 - 1], ' ')
+					console.log(t2 - 1)
+					tile2.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t2 == 5 && greenLoop2 == false){
 				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile2.style.backgroundColor == 'grey'){
+					if (tile2.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
 			}
 		}
 	}		
 }
 
+let greenLoop3 = true
 function func3(){
 	for (let t3 = 1; t3 <= 5; t3++){
 		let tile3Id = 'R3T' + t3.toString()
@@ -272,23 +367,45 @@ function func3(){
 		tile3.style.boxSizing = 'border-box'
 		tile3.style.float = 'left'
 		if (enterPressed == true){
-			if (guessedWord[t3 - 1] == correctWord[t3 - 1]){
-				tile3.style.backgroundColor = 'green'	
-			}else if (correctWord.includes(guessedWord[t3 - 1]) == true){
-				correctWord = correctWord.replace(guessedWord[t3 - 1], '')
-				console.log(correctWord)
-				tile3.style.backgroundColor = 'yellow'
-			}else{
-				tile3.style.backgroundColor = 'grey'
+			if (greenLoop3 == true){
+				if (guessedWord[t3 - 1] == backup[t3 - 1]){
+					backup = backup.replace(guessedWord[t3 - 1], ' ')
+					tile3.style.backgroundColor = 'green'
+					
+				}
 			}
-			if (t3 == 5){
+			
+			if (t3 == 5 && greenLoop3 == true){
+				greenLoop3 = false
+				func3()
+			}
+			
+			if (greenLoop3 == false){
+				if (backup.includes(guessedWord[t3 - 1]) == true){
+					backup = backup.replace(guessedWord[t3 - 1], ' ')
+					console.log(t3 - 1)
+					tile3.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t3 == 5 && greenLoop3 == false){
 				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile3.style.backgroundColor == 'grey'){
+					if (tile3.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
 			}
 		}
 	}		
 }
 
-
+let greenLoop4 = true
 function func4(){
 	for (let t4 = 1; t4 <= 5; t4++){
 		let tile4Id = 'R4T' + t4.toString()
@@ -308,24 +425,46 @@ function func4(){
 		tile4.style.boxSizing = 'border-box'
 		tile4.style.float = 'left'
 		if (enterPressed == true){
-			if (guessedWord[t4 - 1] == correctWord[t4 - 1]){
-				tile4.style.backgroundColor = 'green'	
-			}else if (correctWord.includes(guessedWord[t4 - 1]) == true){
-				correctWord = correctWord.replace(guessedWord[t4 - 1], '')
-				console.log(correctWord)
-				tile4.style.backgroundColor = 'yellow'
-			}else{
-				tile4.style.backgroundColor = 'grey'
+			if (greenLoop4 == true){
+				if (guessedWord[t4 - 1] == backup[t4 - 1]){
+					backup = backup.replace(guessedWord[t4 - 1], ' ')
+					tile4.style.backgroundColor = 'green'
+					
+				}
 			}
-			if (t4 == 5){
+			
+			if (t4 == 5 && greenLoop4 == true){
+				greenLoop4 = false
+				func4()
+			}
+			
+			if (greenLoop4 == false){
+				if (backup.includes(guessedWord[t4 - 1]) == true){
+					backup = backup.replace(guessedWord[t4 - 1], ' ')
+					console.log(t4 - 1)
+					tile4.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t4 == 5 && greenLoop4 == false){
 				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile4.style.backgroundColor == 'grey'){
+					if (tile4.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
 			}
 		}
 	}		
 }
 
 
-
+let greenLoop5 = true
 
 function func5(){
 	for (let t5 = 1; t5 <= 5; t5++){
@@ -346,17 +485,97 @@ function func5(){
 		tile5.style.boxSizing = 'border-box'
 		tile5.style.float = 'left'
 		if (enterPressed == true){
-			if (guessedWord[t5 - 1] == correctWord[t5 - 1]){
-				tile5.style.backgroundColor = 'green'	
-			}else if (correctWord.includes(guessedWord[t5 - 1]) == true){
-				correctWord = correctWord.replace(guessedWord[t5 - 1], '')
-				console.log(correctWord)
-				tile5.style.backgroundColor = 'yellow'
-			}else{
-				tile5.style.backgroundColor = 'grey'
+			if (greenLoop5 == true){
+				if (guessedWord[t5 - 1] == backup[t5 - 1]){
+					backup = backup.replace(guessedWord[t5 - 1], ' ')
+					tile5.style.backgroundColor = 'green'
+					
+				}
 			}
-			if (t5 == 5){
+			
+			if (t5 == 5 && greenLoop5 == true){
+				greenLoop5 = false
+				func5()
+			}
+			
+			if (greenLoop5 == false){
+				if (backup.includes(guessedWord[t5 - 1]) == true){
+					backup = backup.replace(guessedWord[t5 - 1], ' ')
+					console.log(t5 - 1)
+					tile5.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t5 == 5 && greenLoop5 == false){
 				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile5.style.backgroundColor == 'grey'){
+					if (tile5.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
+			}
+		}
+	}		
+}
+
+let greenLoop6 = true
+function func6(){
+	for (let t6 = 1; t6 <= 5; t6++){
+		let tile6Id = 'R6T' + t6.toString()
+		let tile6 = document.getElementById(tile6Id)
+		tile6.innerHTML = guessedWord[t6 - 1] ?? ''
+		tile6.style.display = 'inline-block'
+		tile6.style.width = '70px'
+		tile6.style.height = '80px'
+		tile6.style.top = '400px'
+		tile6.style.margin = '0px'
+		tile6.style.padding = '0px'
+		tile6.style.textAlign = 'center'
+		tile6.style.lineHeight = '82px'
+		tile6.style.fontSize = '42px'
+		tile6.style.borderStyle = 'solid'
+		tile6.style.borderWidth = '1px'
+		tile6.style.boxSizing = 'border-box'
+		tile6.style.float = 'left'
+		if (enterPressed == true){
+			if (greenLoop6 == true){
+				if (guessedWord[t6 - 1] == backup[t6 - 1]){
+					backup = backup.replace(guessedWord[t6 - 1], ' ')
+					tile6.style.backgroundColor = 'green'
+					
+				}
+			}
+			
+			if (t6 == 5 && greenLoop6 == true){
+				greenLoop6 = false
+				func6()
+			}
+			
+			if (greenLoop6 == false){
+				if (backup.includes(guessedWord[t6 - 1]) == true){
+					backup = backup.replace(guessedWord[t6 - 1], ' ')
+					console.log(t6 - 1)
+					tile3.style.backgroundColor = 'yellow'	
+				}	
+			}
+			
+			if (t6 == 5 && greenLoop6 == false){
+				enterPressed = false
+			}
+			for (let l = 1; l <= 26; l++){
+				if (tile6.style.backgroundColor == 'grey'){
+					if (tile6.innerHTML == letters[l]){
+						greyLetters.push(letters[l])
+					}
+						
+				}
+				
+				
 			}
 		}
 	}		
@@ -366,6 +585,13 @@ function func5(){
 
 
 
+
+func1()
+func2()
+func3()
+func4()
+func5()
+func6()
 
 
 

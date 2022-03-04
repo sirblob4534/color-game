@@ -7,47 +7,55 @@
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	top: 10%;
+	top: 5%;
 	left: 50%;
 	transform: translate(-50%, 0%);
 	width: 350px;
-	height: 420px;
+	height: 500px;
 	background: grey;
 }
 
 #qwertyuiop{
-	background-color: lightgrey;
 	padding: 0;
 	margin: 0;
 	position: absolute;
 	left: 50%;
-	bottom: 184px;
+	bottom: 150px;
 	transform: translate(-50%, 0%);
 	width: 484px;
 	height: 58px;
 }
 
 #asdfghjkl{
-	background-color: lightgrey;
 	padding: 0;
 	margin: 0;
 	position: absolute;
 	left: 50%;
-	bottom: 126px;
+	bottom: 90px;
 	transform: translate(-50%, 0%);
 	width: calc(9* 48px);
 	height: 58px;
 }
 
 #zxcvbnm{
-	background-color: lightgrey;
 	padding: 0;
 	margin: 0;
 	position: absolute;
 	left: 50%;
-	bottom: 68px;
+	bottom: 30px;
 	transform: translate(-50%, 0%);
 	width: calc(7 * 48px);
+	height: 58px;
+}
+
+#enter{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: calc(50% - 250px);
+	bottom: 90px;
+	transform: translate(-50%, 0%);
+	width: 48px;
 	height: 58px;
 }
 
@@ -116,8 +124,22 @@
 		<p id='R5T5'></p>
 	  </div>
 	  
+	  <div id="row6">
+		<p id='R6T1'></p>
+		
+		<p id='R6T2'></p>
+		
+		<p id='R6T3'></p>
+		
+		<p id='R6T4'></p>
+		
+		<p id='R6T5'></p>
+	  </div>
+	  
 	  
 	</div>
+	
+	
 	
 	<div id='keyboard'>
 		<div id='qwertyuiop'>
@@ -184,8 +206,15 @@
 			<p id='3K9'></p>
 			
 			<p id='3K10'></p>
-		</div>
+		</div>	
 	</div>
 	
+
+	<p id='backspace'></p>
+
+	<p id='enter'></p>
+
+	
 </body>
+<script src="new_words.js"></script>
 <script src='index.js'></script>

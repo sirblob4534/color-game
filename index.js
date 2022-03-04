@@ -29,8 +29,6 @@ document.addEventListener('click', function(e) {
 	if (enter == e.target && enter.contains(e.target)){
 		if (guessedWord.length == 5){
 			enterPressed = true
-			console.log('backup ' + backup)
-			console.log('correct ' + correctWord)
 			if (currentRow == 1){
 				func1()
 			}else if (currentRow == 2){
@@ -44,13 +42,7 @@ document.addEventListener('click', function(e) {
 			}else if (currentRow == 6){
 				func6()
 			}
-			if (guessedWord == correctWord){
-				alert('You guessed correct!')
-				
-			}
-			console.log('before: ' + backup)
 			backup = correctWord
-			console.log('after: ' + backup)
 			currentRow += 1
 			guessedWord = ''
 		
@@ -130,8 +122,8 @@ for (let L1 = 1; L1 <= 10; L1++){
 	keySet1.style.float = 'left'		
 	document.addEventListener('click', function(e) {
 		if (keySet1 == e.target && keySet1.contains(e.target)) {    
-			guessedWord += keySet1.innerHTML.toString()
-			if (guessedWord.length <= 5){
+			if (guessedWord.length < 5){
+				guessedWord += keySet1.innerHTML.toString()
 				if (currentRow == 1){
 					func1()	
 				}else if (currentRow == 2){
@@ -170,9 +162,9 @@ for (let L2 = 1; L2 <= 9; L2++){
 	keySet2.style.fontSize = '21px'
 	keySet2.style.float = 'left'
 	document.addEventListener('click', function(e) {
-		if (keySet2 == e.target && keySet2.contains(e.target)) {    
-			guessedWord += keySet2.innerHTML.toString()
-			if (guessedWord.length <= 5){
+		if (keySet2 == e.target && keySet2.contains(e.target)) {    			
+			if (guessedWord.length < 5){
+				guessedWord += keySet2.innerHTML.toString()
 				if (currentRow == 1){
 					func1()	
 				}else if (currentRow == 2){
@@ -212,8 +204,8 @@ for (let L3 = 1; L3 <= 7; L3++){
 	keySet3.style.float = 'left'
 	document.addEventListener('click', function(e) {
 		if (keySet3 == e.target && keySet3.contains(e.target)) {    
-			guessedWord += keySet3.innerHTML.toString()
-			if (guessedWord.length <= 5){
+			if (guessedWord.length < 5){
+				guessedWord += keySet3.innerHTML.toString()
 				if (currentRow == 1){
 					func1()	
 				}else if (currentRow == 2){
@@ -325,7 +317,6 @@ function func2(){
 			if (greenLoop2 == false){
 				if (backup.includes(guessedWord[t2 - 1]) == true){
 					backup = backup.replace(guessedWord[t2 - 1], ' ')
-					console.log(t2 - 1)
 					tile2.style.backgroundColor = 'yellow'	
 				}	
 			}
@@ -560,7 +551,7 @@ function func6(){
 				if (backup.includes(guessedWord[t6 - 1]) == true){
 					backup = backup.replace(guessedWord[t6 - 1], ' ')
 					console.log(t6 - 1)
-					tile3.style.backgroundColor = 'yellow'	
+					tile6.style.backgroundColor = 'yellow'	
 				}	
 			}
 			

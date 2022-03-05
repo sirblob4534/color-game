@@ -3,21 +3,25 @@
 	<title>wordle-clone</title>
 </head>
 <style>
+*{
+	margin: 0;
+}
 #board{
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	top: 5%;
+	bottom: 30%;
 	left: 50%;
 	transform: translate(-50%, 0%);
 	width: 350px;
 	height: 500px;
 	background: grey;
+
 }
 
 #qwertyuiop{
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	position: absolute;
 	left: 50%;
 	bottom: 150px;
@@ -27,8 +31,8 @@
 }
 
 #asdfghjkl{
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	position: absolute;
 	left: 50%;
 	bottom: 90px;
@@ -38,8 +42,8 @@
 }
 
 #zxcvbnm{
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	position: absolute;
 	left: 50%;
 	bottom: 30px;
@@ -70,19 +74,17 @@
 
 </style>
 
-<body style="padding:0px; margin: 0px; background:white; user-select: none">
+<body style="padding:0px; margin:0; background:white; user-select: none">
 	<div id='board'>
 	
 	  <div id="row1">
-		<p id='R1T1'></p>
-		
-		<p id='R1T2'></p>
-		
+		<p id='R1T1'></p><!--
+
+		--><p id='R1T2'></p>
 		<p id='R1T3'></p>
-		
 		<p id='R1T4'></p>
-		
 		<p id='R1T5'></p>
+		
 	  </div>
 	  
 	  <div id="row2">

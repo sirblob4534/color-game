@@ -56,7 +56,7 @@ document.addEventListener('click', function(e) {
 
 let rowUnlocked = 1
 let guessedWord = ''
-let correctWord = 'tough'//wordlist[Math.floor(Math.random() * wordlist.length)].toString()
+let correctWord = wordlist[Math.floor(Math.random() * wordlist.length)].toString()
 let keyRowOne = 'qwertyuiop'
 let keyRowTwo = 'asdfghjkl'
 let keyRowThree = 'zxcvbnm'
